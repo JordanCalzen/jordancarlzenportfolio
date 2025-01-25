@@ -5,7 +5,7 @@ export default function MainContent() {
 	return (
 		<div className="">
 			<section className="mb-8">
-				<h1 className="text-4xl font-bold">Hi, I'm Jordan.</h1>
+				<h1 className="text-4xl font-bold">Hi, I{"'"}m Jordan.</h1>
 				<h1 className="text-4xl font-bold -mt-.5">
 					I design <span className="text-[#858585]">Software.</span>
 				</h1>
@@ -16,7 +16,7 @@ export default function MainContent() {
 					<br />
 					through code, I bring creative solutions to complex problems.
 					<br />
-					Let's build something extraordinary together!
+					Let{"'"}s build something extraordinary together{"!"}
 				</p>
 				<div className="flex gap-4">
 					<button className="px-4 py-1 bg-[#1C1C1C] border-[1px] border-zinc-800 text-white rounded-lg transition-colors">

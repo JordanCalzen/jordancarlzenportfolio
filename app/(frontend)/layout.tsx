@@ -3,7 +3,7 @@ import Sidebar from "@/components/side-bar";
 import { useMinimal } from "@/store/minimize";
 import { ReactNode } from "react";
 
-export default function layout({ children }: { children: ReactNode }) {
+export default function FrontLayout({ children }: { children: ReactNode }) {
 	const { isMinimized } = useMinimal();
 
 	return (
