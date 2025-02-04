@@ -3,39 +3,36 @@ import { Mail, Share2 } from "lucide-react";
 
 export default function MainContent() {
 	return (
-		<div className="">
-			<section className="mb-8">
-				<h1 className="text-4xl font-bold">Hi, I{"'"}m Jordan.</h1>
-				<h1 className="text-4xl font-bold -mt-.5">
+		<div className="max-w-7xl mx-auto">
+			<section className="mb-12">
+				<h1 className="text-3xl md:text-4xl font-bold">Hi, I{"'"}m Jordan.</h1>
+				<h1 className="text-3xl md:text-4xl font-bold mt-1">
 					I design <span className="text-[#858585]">Software.</span>
 				</h1>
-				<p className="pt-4 text-[#858585] mb-8">
-					I specialize in crafting seamless web applications and intuitive
-					<br />
-					user experiences. With a passion for turning ideas into reality
-					<br />
-					through code, I bring creative solutions to complex problems.
-					<br />
-					Let{"'"}s build something extraordinary together{"!"}
+				<p className="pt-4 text-[#858585] mb-8 max-w-2xl">
+					I specialize in crafting seamless web applications and intuitive user
+					experiences. With a passion for turning ideas into reality through
+					code, I bring creative solutions to complex problems. Let{"'"}s build
+					something extraordinary together!
 				</p>
 				<div className="flex gap-4">
-					<button className="px-4 py-1 bg-[#1C1C1C] border-[1px] border-zinc-800 text-white rounded-lg transition-colors">
+					<button className="px-4 py-2 bg-[#1C1C1C] border border-zinc-800 text-white rounded-lg transition-colors hover:bg-zinc-800">
 						About
 					</button>
-					<button className="px-4 py-1 bg-transparent text-white rounded-lg border-[1px] border-zinc-800 transition-colors flex items-center gap-2">
+					<button className="px-4 py-2 bg-transparent text-white rounded-lg border border-zinc-800 transition-colors hover:bg-zinc-800 flex items-center gap-2">
 						<Mail className="w-4 h-4" />
 						E-mail
 					</button>
 				</div>
 			</section>
 
-			<section className="mb-8">
-				<h2 className="text-2xl  font-semibold mb-4">Latest Releases</h2>
+			<section className="mb-12">
+				<h2 className="text-2xl font-semibold mb-6">Latest Releases</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 					{["E-Commerce app", "Grocery UI app"].map((project, index) => (
 						<div
 							key={index}
-							className="bg-[#1C1C1C] border border-zinc-800 rounded-lg overflow-hidden"
+							className="bg-[#1C1C1C] border border-zinc-800 rounded-lg overflow-hidden transition-transform hover:scale-105"
 						>
 							<Image
 								src={`/placeholder.svg?height=200&width=400&text=${project}`}
@@ -56,13 +53,13 @@ export default function MainContent() {
 				</div>
 			</section>
 
-			<section className="mb-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
-				<div className="lg:col-span-2 bg- border transparent border-zinc-800 rounded-lg p-6">
+			<section className="mb-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
+				<div className="lg:col-span-2 bg-transparent border border-zinc-800 rounded-lg p-6">
 					<h2 className="text-2xl font-semibold mb-4">Thoughts</h2>
 					<p className="text-gray-400 mb-6">
 						Lorem ipsum dolor sit amet consectetur, adipisic.
 					</p>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+					<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 						{[...Array(6)].map((_, index) => (
 							<div key={index} className="flex items-start gap-4">
 								<div className="bg-zinc-800 p-3 rounded-lg">
@@ -94,13 +91,13 @@ export default function MainContent() {
 				</div>
 			</section>
 
-			<section className="mb-8">
-				<h2 className="text-2xl font-semibold mb-4">Have a Look</h2>
+			<section className="mb-12">
+				<h2 className="text-2xl font-semibold mb-6">Have a Look</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 					{[1, 2].map((item) => (
 						<div
 							key={item}
-							className="bg-transparent border border-zinc-800 rounded-lg p-6"
+							className="bg-transparent border border-zinc-800 rounded-lg p-6 transition-transform hover:scale-105"
 						>
 							<h3 className="text-xl font-semibold mb-2">Project {item}</h3>
 							<p className="text-gray-400">
@@ -118,7 +115,7 @@ export default function MainContent() {
 					<p className="text-gray-400 mb-6">
 						Software and resources I use on a regular basis.
 					</p>
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 						{[
 							"Figma",
 							"VS Code",
