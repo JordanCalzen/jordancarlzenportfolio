@@ -4,7 +4,7 @@ import { Mail, Share2 } from "lucide-react";
 export default function MainContent() {
 	return (
 		<div className="max-w-7xl mx-auto">
-			<section className="mb-12">
+			<section className="mb-12 mt-[4rem]">
 				<h1 className="text-3xl md:text-4xl font-bold">Hi, I{"'"}m Jordan.</h1>
 				<h1 className="text-3xl md:text-4xl font-bold mt-1">
 					I design <span className="text-[#858585]">Software.</span>
@@ -109,7 +109,7 @@ export default function MainContent() {
 				</div>
 			</section>
 
-			<section className="bg-[#1C1C1C] border border-zinc-800 rounded-lg overflow-hidden">
+			<section className="bg-[#1C1C1C] mb-8 border border-zinc-800 rounded-lg overflow-hidden">
 				<div className="p-6">
 					<h2 className="text-2xl font-semibold mb-2">Stack</h2>
 					<p className="text-gray-400 mb-6">

@@ -10,7 +10,7 @@ export default function Footer() {
 
 	return (
 		<footer
-			className={`bg-[#1C1C1C] px-4 py-8 md:px-[6rem] md:py-[3rem] transition-all duration-300 ${
+			className={`bg-[#1C1C1C]  px-4 py-8 md:px-[6rem] md:py-[3rem] transition-all duration-300 ${
 				isMinimized ? "md:ml-[4rem]" : "md:ml-[15rem]"
 			}`}
 		>
