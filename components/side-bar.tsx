@@ -14,7 +14,6 @@ import {
 	Linkedin,
 	Twitter,
 	Youtube,
-	Search,
 	Sun,
 	Moon,
 } from "lucide-react";
@@ -87,19 +86,17 @@ export default function ImprovedSidebar() {
 					</div>
 					{!isMinimized && (
 						<div>
-							<h1 className="text-[.8rem] font-semibold text-white">
+							<h1 className="text-[1rem] font-semibold text-white">
 								Jordan Carlzen
 							</h1>
-							<h1 className="text-[.8rem] text-zinc-400">
-								Fullstack Developer
-							</h1>
+							<h1 className="text-[1rem] text-zinc-400">Fullstack Developer</h1>
 						</div>
 					)}
 				</div>
 
 				<button
 					onClick={toogleMinimizeBtn}
-					className="absolute top-12 right-1 border-[1px] border-zinc-800 w-6 h-6 rounded-full flex items-center justify-center transform transition duration-1000 ease-in-out animate-pulse"
+					className="absolute top-16 right-1 border-[1px] border-zinc-800 w-6 h-6 rounded-full flex items-center justify-center transform transition duration-1000 ease-in-out animate-pulse"
 				>
 					<ChevronLeft
 						className={`w-4 h-4 text-white transition-transform ${
@@ -117,7 +114,6 @@ export default function ImprovedSidebar() {
 							placeholder="Search..."
 							className="w-full bg-zinc-800 text-white text-sm rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
 						/>
-						<Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-zinc-400 w-4 h-4" />
 					</div>
 				</div>
 			)}
@@ -195,7 +191,7 @@ export default function ImprovedSidebar() {
 				</>
 			)}
 
-			<div className="absolute bottom-4 left-0 right-0 flex justify-center">
+			<div className="absolute bottom-0 left-0 right-0 flex justify-center">
 				<button
 					onClick={() => setIsDarkMode(!isDarkMode)}
 					className="text-zinc-400 hover:text-white focus:outline-none"

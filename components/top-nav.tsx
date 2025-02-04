@@ -22,10 +22,12 @@ export default function TopNav() {
 							/>
 						</div>
 						<div className="ml-2">
-							<div className="text-white text-sm font-medium">
+							<div className="text-white text-[1rem] font-medium">
 								Jordan Carlzen
 							</div>
-							<div className="text-zinc-400 text-xs">Fullstack Developer</div>
+							<div className="text-zinc-400 text-[1rem]">
+								Fullstack Developer
+							</div>
 						</div>
 					</div>
 					<div className="flex items-center">
