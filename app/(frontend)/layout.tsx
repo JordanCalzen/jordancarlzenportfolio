@@ -1,6 +1,4 @@
 "use client";
-
-import Footer from "@/components/footer";
 import MobileNavigation from "@/components/mobile-bottom-nav";
 import ImprovedSidebar from "@/components/side-bar";
 import TopNav from "@/components/top-nav";
@@ -22,7 +20,6 @@ export default function FrontLayout({ children }: { children: ReactNode }) {
 			>
 				{children}
 			</main>
-			<Footer />
 			<MobileNavigation />
 		</div>
 	);
