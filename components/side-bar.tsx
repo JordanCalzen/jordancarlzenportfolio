@@ -14,12 +14,11 @@ import {
 	Linkedin,
 	Twitter,
 	Youtube,
-	Sun,
-	Moon,
 } from "lucide-react";
 import Link from "next/link";
 import { useMinimal } from "@/store/minimize";
 import { useState, useEffect } from "react";
+import { ModeToggle } from "./toggleBtn";
 
 const LinkButton = ({ icon, text, link, isMinimized }: any) => {
 	return (
@@ -36,7 +35,6 @@ const LinkButton = ({ icon, text, link, isMinimized }: any) => {
 export default function ImprovedSidebar() {
 	const { isMinimized, toogleMinimizeBtn } = useMinimal();
 	const [isVisible, setIsVisible] = useState(false);
-	const [isDarkMode, setIsDarkMode] = useState(true);
 
 	useEffect(() => {
 		const checkVisibility = () => setIsVisible(window.innerWidth >= 768);
@@ -187,22 +185,12 @@ export default function ImprovedSidebar() {
 								isMobile={false}
 							/>
 						</div>
+						<div className="space-y-2">
+							<ModeToggle />
+						</div>
 					</div>
 				</>
 			)}
-
-			<div className="absolute bottom-0 left-0 right-0 flex justify-center">
-				<button
-					onClick={() => setIsDarkMode(!isDarkMode)}
-					className="text-zinc-400 hover:text-white focus:outline-none"
-				>
-					{isDarkMode ? (
-						<Sun className="w-5 h-5" />
-					) : (
-						<Moon className="w-5 h-5" />
-					)}
-				</button>
-			</div>
 		</div>
 	);
 }

@@ -45,12 +45,12 @@ export default function Footer() {
 
 				<div className="py-8 flex flex-col md:flex-row items-start justify-between text-[#858585] border-b-[1px] border-zinc-800">
 					<div className="mb-4 md:mb-0">
-						<h2 className="flex items-center text-white mb-2">
+						<div className="flex items-center text-white mb-2">
 							Currently Working
 							<div className="text-green-500 text-4xl transform transition duration-1000 ease-in-out animate-pulse">
 								<Dot className="w-10 h-10" />
 							</div>
-						</h2>
+						</div>
 						<Link
 							href=""
 							className="flex items-center justify-start gap-2 text-[#858585] hover:text-white transition-colors"

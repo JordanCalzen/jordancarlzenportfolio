@@ -1,12 +1,7 @@
-"use client";
-
 import Image from "next/image";
-import { Moon, Sun } from "lucide-react";
-import { useState } from "react";
+import { ModeToggle } from "./toggleBtn";
 
 export default function TopNav() {
-	const [isDarkMode, setIsDarkMode] = useState(true);
-
 	return (
 		<nav className="md:hidden fixed top-0 left-0 right-0 bg-[#1C1C1C] border-b border-zinc-800 z-50">
 			<div className="px-4">
@@ -31,16 +26,7 @@ export default function TopNav() {
 						</div>
 					</div>
 					<div className="flex items-center">
-						<button
-							onClick={() => setIsDarkMode(!isDarkMode)}
-							className="text-zinc-400 hover:text-white focus:outline-none"
-						>
-							{isDarkMode ? (
-								<Sun className="w-5 h-5" />
-							) : (
-								<Moon className="w-5 h-5" />
-							)}
-						</button>
+						<ModeToggle />
 					</div>
 				</div>
 			</div>

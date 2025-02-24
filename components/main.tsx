@@ -1,7 +1,10 @@
 import Image from "next/image";
 import { Mail, Share2 } from "lucide-react";
+import WebsiteCard from "./websitecard";
+import { fetchProject } from "@/actions/fetch-apis";
 
-export default function MainContent() {
+export default async function MainContent() {
+	const projectArray = await fetchProject();
 	return (
 		<div className="max-w-7xl mx-auto">
 			<section className="mb-12 mt-[4rem]">
@@ -29,26 +32,8 @@ export default function MainContent() {
 			<section className="mb-12">
 				<h2 className="text-2xl font-semibold mb-6">Latest Releases</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-					{["E-Commerce app", "Grocery UI app"].map((project, index) => (
-						<div
-							key={index}
-							className="bg-[#1C1C1C] border border-zinc-800 rounded-lg overflow-hidden transition-transform hover:scale-105"
-						>
-							<Image
-								src={`/placeholder.svg?height=200&width=400&text=${project}`}
-								alt={project}
-								width={400}
-								height={200}
-								className="w-full h-48 object-cover"
-							/>
-							<div className="p-4">
-								<h3 className="text-xl font-semibold mb-2">{project}</h3>
-								<p className="text-gray-400">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo,
-									unde.
-								</p>
-							</div>
-						</div>
+					{projectArray.slice(0, 2).map((project) => (
+						<WebsiteCard key={project.id} project={project} />
 					))}
 				</div>
 			</section>
