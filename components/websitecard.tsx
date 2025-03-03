@@ -14,8 +14,9 @@ import {
 	CarouselPrevious,
 } from "./ui/carousel";
 import { Project } from "@prisma/client";
+import { Card, CardContent } from "./ui/card";
 
-export default function  WebsiteCard({ project }: { project: Project }) {
+export default function WebsiteCard({ project }: { project: Project }) {
 	const [api, setApi] = useState<CarouselApi>();
 	const [current, setCurrent] = useState(0);
 	const [count, setCount] = useState(0);
@@ -35,26 +36,40 @@ export default function  WebsiteCard({ project }: { project: Project }) {
 	return (
 		<div className="group relative  shadow-sm hover:shadow-md bg-[#1C1C1C] border border-zinc-800 rounded-lg overflow-hidden transition-transform hover:scale-105">
 			{/* Preview Image */}
-			<div className="block aspect-[16/10] overflow-hidden">
-				<Carousel setApi={setApi} className="w-full">
-					<CarouselContent>
-						{project.imageUrls.map((image, index) => (
-							<CarouselItem key={index}>
-								<div className="relative aspect-[4/3]">
-									<Image
-										alt={project.title}
-										className="object-cover w-full h-full rounded-t-lg"
-										fill
-										src={image}
-									/>
-								</div>
-							</CarouselItem>
+			<Card className="block aspect-[16/10] overflow-hidden ">
+				<CardContent className="p-0 bg-white">
+					<Carousel setApi={setApi} className="w-full">
+						<CarouselContent>
+							{project.imageUrls.map((image, index) => (
+								<CarouselItem key={index}>
+									<div className="relative aspect-[4/3]">
+										<Image
+											alt={project.title}
+											className="object-cover w-full h-full rounded-t-lg"
+											fill
+											src={image}
+										/>
+									</div>
+								</CarouselItem>
+							))}
+						</CarouselContent>
+						<CarouselPrevious className="left-2 text-slate-900" />
+						<CarouselNext className="right-2 text-slate-900" />
+					</Carousel>
+					<div className="flex justify-center gap-2 mt-4 pb-4">
+						{Array.from({ length: count }).map((_, index) => (
+							<button
+								key={index}
+								className={`w-2 h-2 rounded-full transition-all ${
+									index + 1 === current ? "bg-blue-600 w-6" : "bg-zinc-600"
+								}`}
+								onClick={() => api?.scrollTo(index)}
+								aria-label={`Go to slide ${index + 1}`}
+							/>
 						))}
-					</CarouselContent>
-					<CarouselPrevious className="left-2 text-slate-900" />
-					<CarouselNext className="right-2 text-slate-900" />
-				</Carousel>
-			</div>
+					</div>
+				</CardContent>
+			</Card>
 
 			{/* Content */}
 			<div className="p-4">

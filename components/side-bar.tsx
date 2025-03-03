@@ -1,196 +1,249 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-
-import Image from "next/image";
 import {
-	ChevronLeft,
 	Compass,
-	Headphones,
-	FolderKanban,
-	User,
-	Brain,
+	ShoppingBag,
+	Home,
+	Briefcase,
+	User2,
+	Newspaper,
+	BookOpen,
 	Layers,
-	Phone,
-	Linkedin,
-	Twitter,
-	Youtube,
+	Mail,
+	Search,
 } from "lucide-react";
-import Link from "next/link";
-import { useMinimal } from "@/store/minimize";
-import { useState, useEffect } from "react";
-import { ModeToggle } from "./toggleBtn";
 
-const LinkButton = ({ icon, text, link, isMinimized }: any) => {
-	return (
-		<Link
-			href={link}
-			className="flex items-center gap-2 p-2 rounded-lg hover:bg-zinc-800 transition-colors duration-200"
-		>
-			{icon}
-			{!isMinimized && <span>{text}</span>}
-		</Link>
-	);
-};
+import {
+	Sidebar,
+	SidebarContent,
+	SidebarHeader,
+	SidebarMenu,
+	SidebarMenuButton,
+	SidebarMenuItem,
+	SidebarRail,
+	useSidebar,
+} from "@/components/ui/sidebar";
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipProvider,
+	TooltipTrigger,
+} from "@/components/ui/tooltip";
+import Image from "next/image";
 
-export default function ImprovedSidebar() {
-	const { isMinimized, toogleMinimizeBtn } = useMinimal();
-	const [isVisible, setIsVisible] = useState(false);
+const mainNavItems = [
+	{ icon: Compass, label: "Explore", shortcut: "1" },
+	{ icon: ShoppingBag, label: "Boutique", shortcut: "2" },
+	{ icon: Home, label: "Projects", shortcut: "3" },
+	{ icon: Briefcase, label: "Services", shortcut: "4" },
+	{ icon: User2, label: "About", shortcut: "5" },
+];
 
-	useEffect(() => {
-		const checkVisibility = () => setIsVisible(window.innerWidth >= 768);
-		checkVisibility();
-		window.addEventListener("resize", checkVisibility);
-		return () => window.removeEventListener("resize", checkVisibility);
-	}, []);
+const resourceItems = [
+	{ icon: Newspaper, label: "Feed", shortcut: "6" },
+	{ icon: BookOpen, label: "Thoughts", shortcut: "7" },
+	{ icon: Layers, label: "Stack", shortcut: "8" },
+];
 
-	const mainLinks = [
-		{
-			icon: <Compass className="w-5 h-5 text-zinc-400" />,
-			text: "Explore",
-			link: "/home",
-		},
-		{
-			icon: <Headphones className="w-5 h-5 text-zinc-400" />,
-			text: "Services",
-			link: "/",
-			active: true,
-		},
-		{
-			icon: <FolderKanban className="w-5 h-5 text-zinc-400" />,
-			text: "Projects",
-			link: "/",
-		},
-		{
-			icon: <User className="w-5 h-5 text-zinc-400" />,
-			text: "About",
-			link: "/",
-		},
-	];
+const connectItems = [{ icon: Mail, label: "Contact", shortcut: "C" }];
 
-	if (!isVisible) {
-		return null; // Don't render the sidebar on screens smaller than 500px
-	}
+export function AppSidebar() {
+	const { state } = useSidebar();
+	const isCollapsed = state === "collapsed";
 
 	return (
-		<div
-			className={`fixed top-0 left-0 h-screen bg-[#1C1C1C] border-r border-zinc-800 transition-all duration-300 overflow-y-auto scrollbar-hide ${
-				isMinimized ? "w-[4rem]" : "w-[15rem]"
-			}`}
+		<Sidebar
+			collapsible="icon"
+			className=" dark border-r bg-[#1C1C1C] border-zinc-800"
 		>
-			<div className="sticky top-0 bg-[#1C1C1C] z-10 p-2">
-				<div className="flex items-center justify-center gap-2 py-2">
-					<div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
-						<Image src="/images/websitepic.jpg" alt="" width={40} height={40} />
-					</div>
-					{!isMinimized && (
-						<div>
-							<h1 className="text-[1rem] font-semibold text-white">
-								Jordan Carlzen
-							</h1>
-							<h1 className="text-[1rem] text-zinc-400">Fullstack Developer</h1>
-						</div>
-					)}
-				</div>
-
-				<button
-					onClick={toogleMinimizeBtn}
-					className="absolute top-16 right-1 border-[1px] border-zinc-800 w-6 h-6 rounded-full flex items-center justify-center transform transition duration-1000 ease-in-out animate-pulse"
-				>
-					<ChevronLeft
-						className={`w-4 h-4 text-white transition-transform ${
-							isMinimized ? "rotate-180" : ""
-						}`}
-					/>
-				</button>
-			</div>
-
-			{!isMinimized && (
-				<div className="px-2 py-4">
-					<div className="relative">
-						<input
-							type="text"
-							placeholder="Search..."
-							className="w-full bg-zinc-800 text-white text-sm rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+			<SidebarHeader className="p-4">
+				<div className="flex items-center gap-3 group-data-[collapsible=icon]:justify-center">
+					<div className="relative w-10 h-10">
+						<Image
+							src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Y5gTXn7c10dQTQ4hUHKJxB592ePkM9.png"
+							alt="Profile"
+							width={200}
+							height={200}
+							className="rounded-full object-cover w-full h-full"
 						/>
 					</div>
+					<div className="flex flex-col group-data-[collapsible=icon]:hidden">
+						<span className="text-sm font-medium text-zinc-100">
+							Jackson Carter
+						</span>
+						<span className="text-xs text-zinc-400">Product Designer</span>
+					</div>
 				</div>
-			)}
+			</SidebarHeader>
+			<SidebarContent className="px-2 custom-scrollbar">
+				<TooltipProvider delayDuration={0}>
+					<SidebarMenu>
+						{mainNavItems.map((item) => (
+							<SidebarMenuItem key={item.label}>
+								<Tooltip>
+									<TooltipTrigger asChild>
+										<SidebarMenuButton
+											asChild
+											className="flex items-center justify-between h-10 w-full rounded-lg px-3 text-zinc-400 
+    hover:text-zinc-100 hover:bg-zinc-800 transition-all duration-200 
+    "
+										>
+											<a
+												href="#"
+												className="flex items-center justify-between w-full group-data-[collapsible=icon]:justify-center"
+											>
+												<div className="flex items-center gap-3">
+													<item.icon className="h-5 w-5" />
+													<span className="text-sm group-data-[collapsible=icon]:hidden">
+														{item.label}
+													</span>
+												</div>
+												<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden">
+													{item.shortcut}
+												</span>
+											</a>
+										</SidebarMenuButton>
+									</TooltipTrigger>
+									<TooltipContent
+										side="right"
+										className="bg-zinc-800 text-zinc-100 border-zinc-700"
+										hidden={!isCollapsed}
+									>
+										{item.label}
+									</TooltipContent>
+								</Tooltip>
+							</SidebarMenuItem>
+						))}
+					</SidebarMenu>
 
-			<nav className="mt-4 px-2 space-y-2">
-				{mainLinks.map((link, index) => (
-					<LinkButton
-						key={index}
-						{...link}
-						isMinimized={isMinimized}
-						isMobile={false}
-					/>
-				))}
-			</nav>
-
-			{!isMinimized && (
-				<>
-					<div className="mt-2 px-2">
-						<h2 className="text-sm font-semibold text-zinc-500 px-3 mb-2">
-							Resources
-						</h2>
-						<div className="space-y-2">
-							<LinkButton
-								link="/"
-								icon={<Brain className="w-5 h-5 text-zinc-400" />}
-								text="Thoughts"
-								isMinimized={isMinimized}
-								isMobile={false}
-							/>
-							<LinkButton
-								link="/"
-								icon={<Layers className="w-5 h-5 text-zinc-400" />}
-								text="Stack"
-								isMinimized={isMinimized}
-								isMobile={false}
-							/>
-						</div>
+					<div className="mt-6">
+						<h4 className="text-xs font-semibold text-zinc-500 px-3 mb-2 group-data-[collapsible=icon]:hidden">
+							RESOURCES
+						</h4>
+						<SidebarMenu>
+							{resourceItems.map((item) => (
+								<SidebarMenuItem key={item.label}>
+									<Tooltip>
+										<TooltipTrigger asChild>
+											<SidebarMenuButton
+												asChild
+												className="flex items-center justify-between h-10 w-full rounded-lg px-3 text-zinc-400 
+    hover:text-zinc-100 hover:bg-zinc-800 transition-all duration-200 
+    "
+											>
+												<a
+													href="#"
+													className="flex items-center justify-between w-full group-data-[collapsible=icon]:justify-center"
+												>
+													<div className="flex items-center gap-3">
+														<item.icon className="h-5 w-5" />
+														<span className="text-sm group-data-[collapsible=icon]:hidden">
+															{item.label}
+														</span>
+													</div>
+													<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden">
+														{item.shortcut}
+													</span>
+												</a>
+											</SidebarMenuButton>
+										</TooltipTrigger>
+										<TooltipContent
+											side="right"
+											className="bg-zinc-800 text-zinc-100 border-zinc-700"
+											hidden={!isCollapsed}
+										>
+											{item.label}
+										</TooltipContent>
+									</Tooltip>
+								</SidebarMenuItem>
+							))}
+						</SidebarMenu>
 					</div>
 
-					<div className="mt-2 px-2">
-						<h2 className="text-sm font-semibold text-zinc-500 px-3 mb-2">
-							Connect
-						</h2>
-						<div className="space-y-2">
-							<LinkButton
-								link="/"
-								icon={<Phone className="w-5 h-5 text-zinc-400" />}
-								text="Contact"
-								isMinimized={isMinimized}
-								isMobile={false}
-							/>
-							<LinkButton
-								link="/"
-								icon={<Linkedin className="w-5 h-5 text-zinc-400" />}
-								text="LinkedIn"
-								isMinimized={isMinimized}
-								isMobile={false}
-							/>
-							<LinkButton
-								link="/"
-								icon={<Twitter className="w-5 h-5 text-zinc-400" />}
-								text="Twitter"
-								isMinimized={isMinimized}
-								isMobile={false}
-							/>
-							<LinkButton
-								link="/"
-								icon={<Youtube className="w-5 h-5 text-zinc-400" />}
-								text="YouTube"
-								isMinimized={isMinimized}
-								isMobile={false}
-							/>
-						</div>
-						<div className="space-y-2">
-							<ModeToggle />
-						</div>
+					<div className="mt-6">
+						<h4 className="text-xs font-semibold text-zinc-500 px-3 mb-2 group-data-[collapsible=icon]:hidden">
+							CONNECT
+						</h4>
+						<SidebarMenu>
+							{connectItems.map((item) => (
+								<SidebarMenuItem key={item.label}>
+									<Tooltip>
+										<TooltipTrigger asChild>
+											<SidebarMenuButton
+												asChild
+												className="flex items-center justify-between h-10 w-full rounded-lg px-3 text-zinc-400 
+    hover:text-zinc-100 hover:bg-zinc-800 transition-all duration-200 
+    "
+											>
+												<a
+													href="#"
+													className="flex items-center justify-between w-full group-data-[collapsible=icon]:justify-center"
+												>
+													<div className="flex items-center gap-3">
+														<item.icon className="h-5 w-5" />
+														<span className="text-sm group-data-[collapsible=icon]:hidden">
+															{item.label}
+														</span>
+													</div>
+													<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden">
+														{item.shortcut}
+													</span>
+												</a>
+											</SidebarMenuButton>
+										</TooltipTrigger>
+										<TooltipContent
+											side="right"
+											className="bg-zinc-800 text-zinc-100 border-zinc-700"
+											hidden={!isCollapsed}
+										>
+											{item.label}
+										</TooltipContent>
+									</Tooltip>
+								</SidebarMenuItem>
+							))}
+						</SidebarMenu>
 					</div>
-				</>
-			)}
-		</div>
+
+					<div className="mt-6">
+						<SidebarMenu>
+							<SidebarMenuItem>
+								<Tooltip>
+									<TooltipTrigger asChild>
+										<SidebarMenuButton
+											asChild
+											className="flex items-center justify-between h-10 w-full rounded-lg px-3 text-zinc-400 
+    hover:text-zinc-100 hover:bg-zinc-800 transition-all duration-200 
+    "
+										>
+											<a
+												href="#"
+												className="flex items-center justify-between w-full group-data-[collapsible=icon]:justify-center"
+											>
+												<div className="flex items-center gap-3">
+													<Search className="h-5 w-5" />
+													<span className="text-sm group-data-[collapsible=icon]:hidden">
+														Search...
+													</span>
+												</div>
+												<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden">
+													S
+												</span>
+											</a>
+										</SidebarMenuButton>
+									</TooltipTrigger>
+									<TooltipContent
+										side="right"
+										className="bg-zinc-800 text-zinc-100 border-zinc-700"
+										hidden={!isCollapsed}
+									>
+										Search
+									</TooltipContent>
+								</Tooltip>
+							</SidebarMenuItem>
+						</SidebarMenu>
+					</div>
+				</TooltipProvider>
+			</SidebarContent>
+			<SidebarRail />
+		</Sidebar>
 	);
 }

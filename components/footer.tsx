@@ -1,20 +1,21 @@
 "use client";
 
-import { useMinimal } from "@/store/minimize";
 import { ArrowRight, Dot } from "lucide-react";
 import Link from "next/link";
 import Digitalclock from "./digitalclock";
+import { useSidebar } from "@/components/ui/sidebar";
 
 export default function Footer() {
-	const { isMinimized } = useMinimal();
+	const { state } = useSidebar();
+	const isCollapsed = state === "collapsed";
 
 	return (
 		<footer
-			className={`bg-[#1C1C1C]  px-4 py-8 md:px-[6rem] md:py-[3rem] transition-all duration-300 ${
-				isMinimized ? "md:ml-[4rem]" : "md:ml-[15rem]"
+			className={`bg-[#1C1C1C] transition-all duration-300 ${
+				isCollapsed ? "md:pl-[.8rem]" : "md:pl-[2.5rem]"
 			}`}
 		>
-			<div className="max-w-7xl mx-auto">
+			<div className="max-w-7xl mx-auto px-10 py-8 md:px-6 md:py-12">
 				<div className="grid grid-cols-2 md:grid-cols-4 gap-8 pb-8 text-[#858585] border-b-[1px] border-zinc-800">
 					{[
 						{
