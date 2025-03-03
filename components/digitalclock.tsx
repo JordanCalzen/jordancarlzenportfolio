@@ -18,7 +18,7 @@ export default function DigitalClock() {
 
 	return (
 		<div>
-			<h1 className="text-6xl text-[#858585]">{formatTime(time)}</h1>
+			<h1 className="text-5xl text-[#858585]">{formatTime(time)}</h1>
 		</div>
 	);
 }
