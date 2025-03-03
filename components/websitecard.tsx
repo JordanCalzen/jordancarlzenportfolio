@@ -91,7 +91,7 @@ export default function WebsiteCard({ project }: { project: Project }) {
 				<div className="flex items-center justify-between">
 					<button className="  text-sm bg-none">
 						<Link
-							href={"/project.websiteUrl"}
+							href={project.websiteUrl}
 							target="_blank"
 							rel="noopener noreferrer"
 							className=" justify-center px-4 py-2 bg-transparent text-white rounded-lg border border-zinc-800 transition-colors hover:bg-zinc-800 flex items-center gap-2"
