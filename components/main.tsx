@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { Mail, Share2 } from "lucide-react";
 import { useSidebar } from "@/components/ui/sidebar";
-import { ProjectProps } from "@/types/types";
 import WebsiteCard from "./websitecard";
 import { Project } from "@prisma/client";
 

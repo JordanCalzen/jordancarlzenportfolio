@@ -36,8 +36,8 @@ export default function WebsiteCard({ project }: { project: Project }) {
 	return (
 		<div className="group relative  shadow-sm hover:shadow-md bg-[#1C1C1C] border border-zinc-800 rounded-lg overflow-hidden transition-transform hover:scale-105">
 			{/* Preview Image */}
-			<Card className="block aspect-[16/10] overflow-hidden ">
-				<CardContent className="p-0 bg-white">
+			<Card className="block aspect-[16/10] border-none overflow-hidden ">
+				<CardContent className="p-0  bg-[#1C1C1C]">
 					<Carousel setApi={setApi} className="w-full">
 						<CarouselContent>
 							{project.imageUrls.map((image, index) => (
@@ -89,16 +89,17 @@ export default function WebsiteCard({ project }: { project: Project }) {
 
 				{/* Visit Website Button */}
 				<div className="flex items-center justify-between">
-					<Button asChild variant="outline" size="sm" className="gap-2 text-sm">
+					<button className="  text-sm bg-none">
 						<Link
 							href={"/project.websiteUrl"}
 							target="_blank"
 							rel="noopener noreferrer"
+							className=" justify-center px-4 py-2 bg-transparent text-white rounded-lg border border-zinc-800 transition-colors hover:bg-zinc-800 flex items-center gap-2"
 						>
-							Visit Website
 							<ExternalLink className="h-4 w-4" />
+							Visit Website
 						</Link>
-					</Button>
+					</button>
 				</div>
 			</div>
 		</div>
