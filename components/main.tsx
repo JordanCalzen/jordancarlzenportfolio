@@ -2,10 +2,11 @@
 import Image from "next/image";
 import { Mail, Share2 } from "lucide-react";
 import { useSidebar } from "@/components/ui/sidebar";
-// import { useState } from "react";
-import WebsiteContainer from "./websiteContainer";
+import { ProjectProps } from "@/types/types";
+import WebsiteCard from "./websitecard";
+import { Project } from "@prisma/client";
 
-export default function MainContent() {
+export default function MainContent({ project }: { project: Project[] }) {
 	const { state } = useSidebar();
 	const isCollapsed = state === "collapsed";
 	// const [isLoading, setIsLoading] = useState(true);
@@ -44,7 +45,11 @@ export default function MainContent() {
 				<section className="mb-12">
 					<h2 className="text-2xl font-semibold mb-6">Latest Releases</h2>
 
-					<WebsiteContainer />
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+						{project.slice(0, 2).map((project) => (
+							<WebsiteCard key={project.id} project={project} />
+						))}
+					</div>
 				</section>
 
 				<section className="mb-12 grid grid-cols-1 lg:grid-cols-3 gap-8">

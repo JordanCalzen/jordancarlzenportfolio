@@ -1,10 +1,12 @@
+import { fetchProjects } from "@/actions/fetch-apis";
 import MainContent from "@/components/main";
 import React from "react";
 
-export default function page() {
+export default async function page() {
+	const projectArray = await fetchProjects();
 	return (
 		<div>
-			<MainContent />
+			<MainContent project={projectArray} />
 		</div>
 	);
 }
