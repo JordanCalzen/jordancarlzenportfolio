@@ -131,7 +131,7 @@ export function AppSidebar() {
     "
 											>
 												<a
-													href="#"
+													href="/projects"
 													className="flex items-center justify-between w-full group-data-[collapsible=icon]:justify-center"
 												>
 													<div className="flex items-center gap-3">

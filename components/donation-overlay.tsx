@@ -11,7 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import confetti from "canvas-confetti";
+// import confetti from "canvas-confetti";
 
 interface DonationOverlayProps {
 	isOpen: boolean;
@@ -48,11 +48,11 @@ export function DonationOverlay({
 			name,
 			paymentMethod,
 		});
-		confetti({
-			particleCount: 100,
-			spread: 70,
-			origin: { y: 0.6 },
-		});
+		// confetti({
+		// 	particleCount: 100,
+		// 	spread: 70,
+		// 	origin: { y: 0.6 },
+		// });
 		onClose();
 	};
 
