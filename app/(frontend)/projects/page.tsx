@@ -1,9 +1,55 @@
-import React from "react";
+"use client";
 
-export default function page() {
+import { useState } from "react";
+import { ProjectCard } from "@/components/project-card";
+import { CategoryFilter } from "@/components/category-filter";
+import { Button } from "@/components/ui/button";
+import projectsData from "@/data/projects.json";
+import { StartProjectOverlay } from "@/components/start-project-overlay";
+
+const categories = Array.from(
+	new Set(projectsData.map((project) => project.category))
+);
+
+export default function Home() {
+	const [selectedCategory, setSelectedCategory] = useState("All");
+	const [isStartProjectOpen, setIsStartProjectOpen] = useState(false);
+
+	const filteredProjects =
+		selectedCategory === "All"
+			? projectsData
+			: projectsData.filter((project) => project.category === selectedCategory);
+
 	return (
-		<div>
-			<h1>hello</h1>
+		<div className="space-y-12">
+			<div className="text-center space-y-4 pt-20 sm:pt-10">
+				<h1 className="text-5xl tracking-tight">Support My Work</h1>
+				<p className="text-xl text-muted-foreground">
+					Discover and fund amazing projects that make a difference in the
+					coding Ecosystem.
+				</p>
+				<Button
+					size="lg"
+					className="mt-4 px-4 py-2 bg-[#1C1C1C] border border-zinc-800 text-white rounded-lg transition-colors hover:bg-zinc-800 text-base"
+					onClick={() => setIsStartProjectOpen(true)}
+				>
+					Start Your Campaign
+				</Button>
+			</div>
+			<CategoryFilter
+				categories={categories}
+				selectedCategory={selectedCategory}
+				onCategoryChange={setSelectedCategory}
+			/>
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+				{filteredProjects.map((project) => (
+					<ProjectCard key={project.id} project={project} />
+				))}
+			</div>
+			<StartProjectOverlay
+				isOpen={isStartProjectOpen}
+				onClose={() => setIsStartProjectOpen(false)}
+			/>
 		</div>
 	);
 }

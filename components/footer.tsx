@@ -11,7 +11,7 @@ export default function Footer() {
 
 	return (
 		<footer
-			className={`bg-[#1C1C1C] transition-all duration-300 ${
+			className={`bg-[#1C1C1C]  transition-all duration-300 ${
 				isCollapsed ? "md:pl-[.8rem]" : "md:pl-[2.5rem]"
 			}`}
 		>

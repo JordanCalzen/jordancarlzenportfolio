@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
-import { Mail, Share2 } from "lucide-react";
+import { ArrowRight, Mail, Share2 } from "lucide-react";
 import { useSidebar } from "@/components/ui/sidebar";
 import WebsiteCard from "./websitecard";
 import { Project } from "@prisma/client";
+import Link from "next/link";
 
 export default function MainContent({ project }: { project: Project[] }) {
 	const { state } = useSidebar();
@@ -42,7 +43,16 @@ export default function MainContent({ project }: { project: Project[] }) {
 				</section>
 
 				<section className="mb-12">
-					<h2 className="text-2xl font-semibold mb-6">Latest Releases</h2>
+					<div className="flex items-center justify-between ">
+						<h2 className="text-2xl font-semibold mb-6">Latest Releases</h2>
+						<Link
+							href={"/projects"}
+							className="flex items-center justify-center gap-2"
+						>
+							View All
+							<ArrowRight className="w-4 h-4" />
+						</Link>
+					</div>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 						{project.slice(0, 2).map((project) => (

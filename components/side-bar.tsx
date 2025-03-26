@@ -59,18 +59,18 @@ export function AppSidebar() {
 				<div className="flex items-center gap-3 group-data-[collapsible=icon]:justify-center">
 					<div className="relative w-10 h-10">
 						<Image
-							src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Y5gTXn7c10dQTQ4hUHKJxB592ePkM9.png"
+							src="/images/jordancarlzen1.jpg"
 							alt="Profile"
-							width={200}
-							height={200}
+							width={500}
+							height={500}
 							className="rounded-full object-cover w-full h-full"
 						/>
 					</div>
 					<div className="flex flex-col group-data-[collapsible=icon]:hidden">
 						<span className="text-sm font-medium text-zinc-100">
-							Jackson Carter
+							Jordan Carlzen
 						</span>
-						<span className="text-xs text-zinc-400">Product Designer</span>
+						<span className="text-xs text-zinc-400">Fullstack Developer</span>
 					</div>
 				</div>
 			</SidebarHeader>
@@ -97,7 +97,7 @@ export function AppSidebar() {
 														{item.label}
 													</span>
 												</div>
-												<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden">
+												<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden border border-zinc-800 rounded-sm px-1">
 													{item.shortcut}
 												</span>
 											</a>
@@ -140,7 +140,7 @@ export function AppSidebar() {
 															{item.label}
 														</span>
 													</div>
-													<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden">
+													<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden border border-zinc-800 rounded-sm px-1">
 														{item.shortcut}
 													</span>
 												</a>
@@ -184,7 +184,7 @@ export function AppSidebar() {
 															{item.label}
 														</span>
 													</div>
-													<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden">
+													<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden border border-zinc-800 rounded-sm px-1">
 														{item.shortcut}
 													</span>
 												</a>
@@ -224,7 +224,7 @@ export function AppSidebar() {
 														Search...
 													</span>
 												</div>
-												<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden">
+												<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden border border-zinc-800 rounded-sm px-1">
 													S
 												</span>
 											</a>
