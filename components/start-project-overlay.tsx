@@ -19,7 +19,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import confetti from "canvas-confetti";
+// import confetti from "canvas-confetti";
 
 interface StartProjectOverlayProps {
 	isOpen: boolean;
@@ -49,11 +49,11 @@ export function StartProjectOverlay({
 		console.log("Project submitted:", { title, description, amount, category });
 
 		// Trigger confetti effect
-		confetti({
-			particleCount: 100,
-			spread: 70,
-			origin: { y: 0.6 },
-		});
+		// confetti({
+		// 	particleCount: 100,
+		// 	spread: 70,
+		// 	origin: { y: 0.6 },
+		// });
 
 		// Reset form and close overlay
 		setTitle("");
