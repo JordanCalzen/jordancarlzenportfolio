@@ -25,7 +25,7 @@ export default function MobileNavigation() {
 
 	useEffect(() => {
 		const checkVisibility = () => {
-			setIsVisible(window.innerWidth < 500);
+			setIsVisible(window.innerWidth < 765);
 		};
 
 		checkVisibility();
@@ -45,17 +45,17 @@ export default function MobileNavigation() {
 					text="Explore"
 				/>
 				<NavLink
-					href="/"
+					href="/services"
 					icon={<Headphones className="w-6 h-6 text-zinc-400" />}
 					text="Services"
 				/>
 				<NavLink
-					href="/"
+					href="/projects"
 					icon={<FolderKanban className="w-6 h-6 text-zinc-400" />}
 					text="Projects"
 				/>
 				<NavLink
-					href="/"
+					href="/about"
 					icon={<User className="w-6 h-6 text-zinc-400" />}
 					text="About"
 				/>

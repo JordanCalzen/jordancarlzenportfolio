@@ -29,19 +29,21 @@ import {
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const mainNavItems = [
-	{ icon: Compass, label: "Explore", shortcut: "1" },
-	{ icon: ShoppingBag, label: "Boutique", shortcut: "2" },
-	{ icon: Home, label: "Projects", shortcut: "3" },
-	{ icon: Briefcase, label: "Services", shortcut: "4" },
-	{ icon: User2, label: "About", shortcut: "5" },
+	{ icon: Compass, label: "Explore", shortcut: "1", href: "/" },
+	{ icon: ShoppingBag, label: "Boutique", shortcut: "2", href: "/dh" },
+	{ icon: Home, label: "Projects", shortcut: "3", href: "/projects" },
+	{ icon: Briefcase, label: "Services", shortcut: "4", href: "/services" },
+	{ icon: User2, label: "About", shortcut: "5", href: "/about" },
 ];
 
 const resourceItems = [
-	{ icon: Newspaper, label: "Feed", shortcut: "6" },
-	{ icon: BookOpen, label: "Thoughts", shortcut: "7" },
-	{ icon: Layers, label: "Stack", shortcut: "8" },
+	{ icon: Newspaper, label: "Feed", shortcut: "6", href: "/feed" },
+	{ icon: BookOpen, label: "Thoughts", shortcut: "7", href: "/thoughts" },
+	{ icon: Layers, label: "Stack", shortcut: "8", href: "/stack" },
 ];
 
 const connectItems = [{ icon: Mail, label: "Contact", shortcut: "C" }];
@@ -49,6 +51,8 @@ const connectItems = [{ icon: Mail, label: "Contact", shortcut: "C" }];
 export function AppSidebar() {
 	const { state } = useSidebar();
 	const isCollapsed = state === "collapsed";
+
+	const pathname = usePathname();
 
 	return (
 		<Sidebar
@@ -77,42 +81,45 @@ export function AppSidebar() {
 			<SidebarContent className="px-2 custom-scrollbar">
 				<TooltipProvider delayDuration={0}>
 					<SidebarMenu>
-						{mainNavItems.map((item) => (
-							<SidebarMenuItem key={item.label}>
-								<Tooltip>
-									<TooltipTrigger asChild>
-										<SidebarMenuButton
-											asChild
-											className="flex items-center justify-between h-10 w-full rounded-lg px-3 text-zinc-400 
-    hover:text-zinc-100 hover:bg-zinc-800 transition-all duration-200 
-    "
-										>
-											<a
-												href="#"
-												className="flex items-center justify-between w-full group-data-[collapsible=icon]:justify-center"
+						{mainNavItems.map(({ icon: Icon, label, shortcut, href }) => {
+							const isActive = pathname === href;
+							return (
+								<SidebarMenuItem key={label}>
+									<Tooltip>
+										<TooltipTrigger asChild>
+											<SidebarMenuButton
+												asChild
+												className={`flex items-center justify-between h-10 w-full  px-3bg-[#1C1C1C] border border-zinc-800 text-white rounded-lg  hover:bg-zinc-800 transition-all duration-200 ${
+													isActive ? "bg-zinc-800 text-white" : ""
+												}`}
 											>
-												<div className="flex items-center gap-3">
-													<item.icon className="h-5 w-5" />
-													<span className="text-sm group-data-[collapsible=icon]:hidden">
-														{item.label}
+												<Link
+													href={href}
+													className="flex items-center justify-between w-full group-data-[collapsible=icon]:justify-center"
+												>
+													<div className="flex items-center gap-3">
+														<Icon className="h-5 w-5" />
+														<span className="text-sm group-data-[collapsible=icon]:hidden">
+															{label}
+														</span>
+													</div>
+													<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden border border-zinc-800 rounded-sm px-1">
+														{shortcut}
 													</span>
-												</div>
-												<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden border border-zinc-800 rounded-sm px-1">
-													{item.shortcut}
-												</span>
-											</a>
-										</SidebarMenuButton>
-									</TooltipTrigger>
-									<TooltipContent
-										side="right"
-										className="bg-zinc-800 text-zinc-100 border-zinc-700"
-										hidden={!isCollapsed}
-									>
-										{item.label}
-									</TooltipContent>
-								</Tooltip>
-							</SidebarMenuItem>
-						))}
+												</Link>
+											</SidebarMenuButton>
+										</TooltipTrigger>
+										<TooltipContent
+											side="right"
+											className="bg-zinc-800 text-zinc-100 border-zinc-700"
+											hidden={!isCollapsed}
+										>
+											{label}
+										</TooltipContent>
+									</Tooltip>
+								</SidebarMenuItem>
+							);
+						})}
 					</SidebarMenu>
 
 					<div className="mt-6">
@@ -120,86 +127,45 @@ export function AppSidebar() {
 							RESOURCES
 						</h4>
 						<SidebarMenu>
-							{resourceItems.map((item) => (
-								<SidebarMenuItem key={item.label}>
-									<Tooltip>
-										<TooltipTrigger asChild>
-											<SidebarMenuButton
-												asChild
-												className="flex items-center justify-between h-10 w-full rounded-lg px-3 text-zinc-400 
-    hover:text-zinc-100 hover:bg-zinc-800 transition-all duration-200 
-    "
-											>
-												<a
-													href="/projects"
-													className="flex items-center justify-between w-full group-data-[collapsible=icon]:justify-center"
+							{resourceItems.map(({ icon: Icon, label, shortcut, href }) => {
+								const isActive = pathname === href;
+								return (
+									<SidebarMenuItem key={label}>
+										<Tooltip>
+											<TooltipTrigger asChild>
+												<SidebarMenuButton
+													asChild
+													className={`flex items-center justify-between h-10 w-full  px-3bg-[#1C1C1C] border border-zinc-800 text-white rounded-lg  hover:bg-zinc-800 transition-all duration-200 ${
+														isActive ? "bg-zinc-800 text-white" : ""
+													}`}
 												>
-													<div className="flex items-center gap-3">
-														<item.icon className="h-5 w-5" />
-														<span className="text-sm group-data-[collapsible=icon]:hidden">
-															{item.label}
+													<Link
+														href={href}
+														className="flex items-center justify-between w-full group-data-[collapsible=icon]:justify-center"
+													>
+														<div className="flex items-center gap-3">
+															<Icon className="h-5 w-5" />
+															<span className="text-sm group-data-[collapsible=icon]:hidden">
+																{label}
+															</span>
+														</div>
+														<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden border border-zinc-800 rounded-sm px-1">
+															{shortcut}
 														</span>
-													</div>
-													<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden border border-zinc-800 rounded-sm px-1">
-														{item.shortcut}
-													</span>
-												</a>
-											</SidebarMenuButton>
-										</TooltipTrigger>
-										<TooltipContent
-											side="right"
-											className="bg-zinc-800 text-zinc-100 border-zinc-700"
-											hidden={!isCollapsed}
-										>
-											{item.label}
-										</TooltipContent>
-									</Tooltip>
-								</SidebarMenuItem>
-							))}
-						</SidebarMenu>
-					</div>
-
-					<div className="mt-6">
-						<h4 className="text-xs font-semibold text-zinc-500 px-3 mb-2 group-data-[collapsible=icon]:hidden">
-							CONNECT
-						</h4>
-						<SidebarMenu>
-							{connectItems.map((item) => (
-								<SidebarMenuItem key={item.label}>
-									<Tooltip>
-										<TooltipTrigger asChild>
-											<SidebarMenuButton
-												asChild
-												className="flex items-center justify-between h-10 w-full rounded-lg px-3 text-zinc-400 
-    hover:text-zinc-100 hover:bg-zinc-800 transition-all duration-200 
-    "
+													</Link>
+												</SidebarMenuButton>
+											</TooltipTrigger>
+											<TooltipContent
+												side="right"
+												className="bg-zinc-800 text-zinc-100 border-zinc-700"
+												hidden={!isCollapsed}
 											>
-												<a
-													href="#"
-													className="flex items-center justify-between w-full group-data-[collapsible=icon]:justify-center"
-												>
-													<div className="flex items-center gap-3">
-														<item.icon className="h-5 w-5" />
-														<span className="text-sm group-data-[collapsible=icon]:hidden">
-															{item.label}
-														</span>
-													</div>
-													<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden border border-zinc-800 rounded-sm px-1">
-														{item.shortcut}
-													</span>
-												</a>
-											</SidebarMenuButton>
-										</TooltipTrigger>
-										<TooltipContent
-											side="right"
-											className="bg-zinc-800 text-zinc-100 border-zinc-700"
-											hidden={!isCollapsed}
-										>
-											{item.label}
-										</TooltipContent>
-									</Tooltip>
-								</SidebarMenuItem>
-							))}
+												{label}
+											</TooltipContent>
+										</Tooltip>
+									</SidebarMenuItem>
+								);
+							})}
 						</SidebarMenu>
 					</div>
 
@@ -214,7 +180,7 @@ export function AppSidebar() {
     hover:text-zinc-100 hover:bg-zinc-800 transition-all duration-200 
     "
 										>
-											<a
+											<Link
 												href="#"
 												className="flex items-center justify-between w-full group-data-[collapsible=icon]:justify-center"
 											>
@@ -227,7 +193,7 @@ export function AppSidebar() {
 												<span className="text-xs text-zinc-600 group-data-[collapsible=icon]:hidden border border-zinc-800 rounded-sm px-1">
 													S
 												</span>
-											</a>
+											</Link>
 										</SidebarMenuButton>
 									</TooltipTrigger>
 									<TooltipContent
