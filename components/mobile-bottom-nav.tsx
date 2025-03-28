@@ -40,7 +40,7 @@ export default function MobileNavigation() {
 		<nav className="fixed bottom-0 left-0 right-0 bg-[#1C1C1C] border-t border-zinc-800 px-4 py-2">
 			<div className="flex justify-around items-center">
 				<NavLink
-					href="/home"
+					href="/"
 					icon={<Compass className="w-6 h-6 text-zinc-400" />}
 					text="Explore"
 				/>
