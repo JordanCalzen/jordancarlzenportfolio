@@ -32,13 +32,19 @@ export default function MainContent({ project }: { project: Project[] }) {
 						{"'"}s build something extraordinary together!
 					</p>
 					<div className="flex gap-4">
-						<button className="px-4 py-2 bg-[#1C1C1C] border border-zinc-800 text-white rounded-lg transition-colors hover:bg-zinc-800">
+						<Link
+							href="/about"
+							className="px-4 py-2 bg-[#1C1C1C] border border-zinc-800 text-white rounded-lg transition-colors hover:bg-zinc-800"
+						>
 							About
-						</button>
-						<button className="px-4 py-2 bg-transparent text-white rounded-lg border border-zinc-800 transition-colors hover:bg-zinc-800 flex items-center gap-2">
+						</Link>
+						<Link
+							href="https://mail.google.com/"
+							className="px-4 py-2 bg-transparent text-white rounded-lg border border-zinc-800 transition-colors hover:bg-zinc-800 flex items-center gap-2"
+						>
 							<Mail className="w-4 h-4" />
 							E-mail
-						</button>
+						</Link>
 					</div>
 				</section>
 
@@ -65,7 +71,7 @@ export default function MainContent({ project }: { project: Project[] }) {
 					<div className="lg:col-span-2 bg-transparent border border-zinc-800 rounded-lg p-6">
 						<h2 className="text-2xl font-semibold mb-4">Thoughts</h2>
 						<p className="text-gray-400 mb-6">
-							Lorem ipsum dolor sit amet consectetur, adipisic.
+							Sharing experiences, knowledge, and discoveries in the tech world.
 						</p>
 						<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 							{[...Array(6)].map((_, index) => (

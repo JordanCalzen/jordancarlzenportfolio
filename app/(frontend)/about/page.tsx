@@ -342,28 +342,28 @@ export default function AboutPage() {
 
 						<div className="flex justify-center gap-6">
 							<Link
-								href="https://github.com"
+								href="https://github.com/JordanCalzen"
 								className="text-gray-300 hover:text-white transition-colors"
 							>
 								<Github className="h-6 w-6" />
 								<span className="sr-only">GitHub</span>
 							</Link>
 							<Link
-								href="https://linkedin.com"
+								href="https://www.linkedin.com/in/jordan-carlzen-dev-bb44ba338/"
 								className="text-gray-300 hover:text-white transition-colors"
 							>
 								<Linkedin className="h-6 w-6" />
 								<span className="sr-only">LinkedIn</span>
 							</Link>
 							<Link
-								href="https://youtube.com"
+								href="https://www.youtube.com/@jordancarlzendev"
 								className="text-gray-300 hover:text-white transition-colors"
 							>
 								<Youtube className="h-6 w-6" />
 								<span className="sr-only">YouTube</span>
 							</Link>
 							<Link
-								href="mailto:contact@example.com"
+								href="https://mail.google.com/"
 								className="text-gray-300 hover:text-white transition-colors"
 							>
 								<Mail className="h-6 w-6" />
