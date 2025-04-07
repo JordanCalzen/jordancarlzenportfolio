@@ -34,7 +34,6 @@ import { usePathname } from "next/navigation";
 
 const mainNavItems = [
 	{ icon: Compass, label: "Explore", shortcut: "1", href: "/" },
-	{ icon: ShoppingBag, label: "Boutique", shortcut: "2", href: "/dh" },
 	{ icon: Home, label: "Projects", shortcut: "3", href: "/projects" },
 	{ icon: Briefcase, label: "Services", shortcut: "4", href: "/services" },
 	{ icon: User2, label: "About", shortcut: "5", href: "/about" },
