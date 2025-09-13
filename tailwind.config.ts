@@ -61,6 +61,15 @@ export default withUt({
 					border: "hsl(var(--sidebar-border))",
 					ring: "hsl(var(--sidebar-ring))",
 				},
+				keyframes: {
+					marquee: {
+						"0%": { transform: "translateX(0)" },
+						"100%": { transform: "translateX(-100%)" },
+					},
+				},
+				animation: {
+					marquee: "marquee 30s linear infinite",
+				},
 			},
 			borderRadius: {
 				lg: "var(--radius)",

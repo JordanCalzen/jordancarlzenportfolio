@@ -6,8 +6,13 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import TopNav from "@/components/top-nav";
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
 import MobileNavigation from "@/components/mobile-bottom-nav";
 import { ThemeProvider } from "@/components/theme-provider";
+import ChatWidgetV2 from "@/components/ChatWidget";
+import { Toaster } from "sonner";
+import { ourFileRouter } from "./api/uploadthing/core";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,6 +42,11 @@ export default function RootLayout({
 									disableTransitionOnChange
 								>
 									{children}
+									<NextSSRPlugin
+										routerConfig={extractRouterConfig(ourFileRouter)}
+									/>
+									<Toaster richColors />
+									<ChatWidgetV2 />
 								</ThemeProvider>
 							</main>
 							<Footer />

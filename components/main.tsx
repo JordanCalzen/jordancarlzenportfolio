@@ -5,6 +5,52 @@ import { useSidebar } from "@/components/ui/sidebar";
 import WebsiteCard from "./websitecard";
 import { Project } from "@prisma/client";
 import Link from "next/link";
+import StackSection from "./stack-section";
+
+const stackIcons = [
+	{
+		src: "/images/react-logo.webp",
+		alt: "React",
+		width: 96,
+		height: 96,
+	},
+	{
+		src: "/images/nextjs-logo.webp",
+		alt: "Next.js",
+		width: 96,
+		height: 96,
+	},
+	{
+		src: "/images/typescript-logo.webp",
+		alt: "TypeScript",
+		width: 48,
+		height: 48,
+	},
+	{
+		src: "/images/authjs-logo.png",
+		alt: "Auth.js",
+		width: 96,
+		height: 96,
+	},
+	{
+		src: "/images/postgres-logo.png",
+		alt: "PostgreSQL",
+		width: 48,
+		height: 48,
+	},
+	{
+		src: "/images/stripe-logo.webp",
+		alt: "Stripe",
+		width: 32,
+		height: 32,
+	},
+	{
+		src: "/images/tailwindcss-logo.webp",
+		alt: "Tailwind CSS",
+		width: 96,
+		height: 96,
+	},
+];
 
 export default function MainContent({ project }: { project: Project[] }) {
 	const { state } = useSidebar();
@@ -123,44 +169,7 @@ export default function MainContent({ project }: { project: Project[] }) {
 					</div>
 				</section>
 
-				<section className="bg-[#1C1C1C] mb-8 border border-zinc-800 rounded-lg overflow-hidden">
-					<div className="p-6">
-						<h2 className="text-2xl font-semibold mb-2">Stack</h2>
-						<p className="text-gray-400 mb-6">
-							Software and resources I use on a regular basis.
-						</p>
-						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-							{[
-								"Figma",
-								"VS Code",
-								"GitHub",
-								"MongoDB",
-								"Photoshop",
-								"React",
-							].map((tool, index) => (
-								<div key={index} className="flex items-center gap-4">
-									<div className="bg-zinc-800 p-3 rounded-lg">
-										<Image
-											src={`/placeholder.svg?height=40&width=40&text=${tool}`}
-											alt={tool}
-											width={40}
-											height={40}
-										/>
-									</div>
-									<div>
-										<h3 className="font-semibold">{tool}</h3>
-										<p className="text-gray-400">Development</p>
-									</div>
-								</div>
-							))}
-						</div>
-					</div>
-					<div className="border-t border-zinc-800 p-6">
-						<button className="w-full px-4 py-2 bg-zinc-800 text-white rounded hover:bg-zinc-700 transition-colors">
-							View All
-						</button>
-					</div>
-				</section>
+				<StackSection />
 			</div>
 		</div>
 	);
